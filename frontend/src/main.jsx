@@ -10,6 +10,9 @@ import Shows from "./pages/Shows.jsx";
 import Search from "./pages/Search.jsx";
 import ShowPage from "./pages/ShowPage.jsx";
 
+// LOGIN IMPORT 
+import Login from "./pages/Login.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -20,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         {/* <Route path="/playlists" element={<Playlists />} /> */}
         <Route path="/search" element={<Search />} />
         <Route path="/show/:id" element={<ShowPage />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

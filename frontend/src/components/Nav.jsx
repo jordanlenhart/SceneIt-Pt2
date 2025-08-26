@@ -46,7 +46,7 @@ const Nav = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-10">
                 <a
-                  href="#"
+                  href="/login"
                   className="hover:text-secondary transition-colors duration-200 font-normal"
                 >
                   Log In

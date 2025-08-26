@@ -1,9 +1,18 @@
 import express from "express";
-import verifyToken from "./middleware/auth.js";     // default import (see auth.js below)
+import cors from "cors";
+import verifyToken from "./middleware/auth.js";
 import showRouter from "./routes/show.js";
-import jwt from "jsonwebtoken";                     // ✅ use default import
+import jwt from "jsonwebtoken";
 
 const app = express();
+
+// ✅ CORS (allow frontend on 5173 and the Authorization header)
+app.use(cors({
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 app.use(express.json());
 
 // Public login to mint a test token
