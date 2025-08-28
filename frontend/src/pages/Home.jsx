@@ -1,11 +1,13 @@
 import Hero from "../components/Hero";
-import Nav from "../components/Nav"
-
+import TrendingPlaylists from "../components/TrendingPlaylists.jsx";
+import TrendingShows from "../components/TrendingShows.jsx";
 
 export default function Home() {
     return (
       <div>
         <Hero />
+        <TrendingShows/>
+        <TrendingPlaylists/>
       </div>
     );
   }

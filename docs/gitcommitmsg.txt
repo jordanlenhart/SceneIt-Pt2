@@ -1,4 +1,0 @@
-Short description of commit
-
-
-Longer explanation of reasoning behind commit
