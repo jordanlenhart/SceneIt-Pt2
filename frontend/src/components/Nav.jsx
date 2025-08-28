@@ -34,13 +34,16 @@ const Nav = () => {
       <nav className="bg-primary text-white shadow-lg">
         <div className="max-w-7xl mx-auto py-3 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
+            {/* Logo Button */}
             <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center space-x-1">
+              <Link
+              to="/Account"
+              className="hero-btn-primary flex justify-center items-center gap-2"
+              >
                 <img src='/sceneit.png' width={35} alt="SceneIt" />
                 <span className="font-medium text-3xl">SceneIt</span>
+              </Link>
               </div>
-            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:block">
@@ -96,12 +99,13 @@ const Nav = () => {
               <div className="relative mb-4 px-3">
                <SearchBar placeholder="Search" onSearch={handleSearch} />
               </div>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-600 transition-all duration-200"
-              >
+              <Link
+                    to="/Account"
+                    className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-600 transition-all duration-200"
+                  >
                 Log In
-              </a>
+              </Link>
+
               <button
                 onClick={openModal}
                 className="text-gray-300 block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:text-white hover:bg-slate-600 transition-all duration-200"
