@@ -74,13 +74,13 @@ export default function TrendingPlaylists() {
     };
 
     return (
-        <div className="bg-primary py-12 h-screen">
+        <div className="py-12 h-screen">
             {/* Title */}
             <div className="w-full max-w-6xl mx-auto text-center">
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-200">
+                <h2 className="text-2xl md:text-3xl mb-4 font-semibold text-gray-200">
                     Trending Playlists
                 </h2>
-                <div className="h-[2px] bg-white w-3/4 mx-auto mt-2 mb-6"></div>
+                <div className="h-[2px] bg-white/30 w-3/4 mx-auto mt-2 mb-10"></div>
             </div>
 
             {/* Carousel */}

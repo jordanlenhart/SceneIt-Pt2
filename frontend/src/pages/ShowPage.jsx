@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ShowCard from "../components/ShowCard";
+import Ratings from '../components/Ratings';
+import FavoriteHeart from "../components/FavoriteHeart";
 
-const API_KEY = "77a22f18008a567c7820ad861f4a5dc7"; // need to move later
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const ShowPage = () => {
   const { id } = useParams();
@@ -32,7 +34,7 @@ const ShowPage = () => {
         const simData = await simRes.json();
         setSimilar(simData.results || []);
       } catch (err) {
-        console.error("Error fetching show details:", err);
+        console.error("Error fetching showId details:", err);
       } finally {
         setLoading(false);
       }
@@ -41,11 +43,11 @@ const ShowPage = () => {
   }, [id]);
 
   if (loading) return <p className="text-white p-6">Loading...</p>;
-  if (!details) return <p className="text-white p-6">Show not found</p>;
+  if (!details) return <p className="text-white p-6">show not found</p>;
 
   return (
-    <div className="bg-primary min-h-screen text-white p-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="min-h-screen text-white my-32 p-6">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Hero Poster */}
         <div>
           {details.poster_path ? (
@@ -61,7 +63,7 @@ const ShowPage = () => {
           )}
         </div>
 
-        {/* Show Details */}
+        {/* show Details */}
         <div className="md:col-span-2">
           <h1 className="text-4xl font-bold mb-2">{details.name}</h1>
 
@@ -92,22 +94,7 @@ const ShowPage = () => {
           {/* User Rating (⭐ out of 5) */}
           <div className="mt-6">
             <p className="mb-2 font-semibold">Rate?</p>
-            <div className="flex space-x-2">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <svg
-                  key={star}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill={(hover || rating) >= star ? "#FFB703" : "#444"}
-                  className="w-6 h-6 cursor-pointer transition-colors"
-                  onMouseEnter={() => setHover(star)}
-                  onMouseLeave={() => setHover(0)}
-                  onClick={() => setRating(star)}
-                >
-                  <path d="M12 2l2.9 6.9 7.6.6-5.7 4.8 1.7 7.5L12 17.8 5.5 21.8l1.7-7.5L1.5 9.5l7.6-.6L12 2z" />
-                </svg>
-              ))}
-            </div>
+            <Ratings showId={details.id}/>
           </div>
 
           {/* Watched & Listed Toggles */}

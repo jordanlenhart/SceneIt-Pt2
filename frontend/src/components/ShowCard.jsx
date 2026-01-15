@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
-const API_KEY = "77a22f18008a567c7820ad861f4a5dc7"; // need to move later
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY 
 
-const ShowCard = ({ show }) => {
+export default function ShowCard ({ show }) {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
   const [details, setDetails] = useState(null);
@@ -69,5 +69,3 @@ const ShowCard = ({ show }) => {
     </div>
   );
 };
-
-export default ShowCard;

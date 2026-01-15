@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";
 
-const API_KEY = "77a22f18008a567c7820ad861f4a5dc7"; 
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY; /// replaced with value from frontend .env file
+ 
 const TRENDING_URL = `https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}`;
 
 export default function TrendingShows() {
@@ -49,13 +50,13 @@ export default function TrendingShows() {
   }
 
   return (
-    <div className="bg-primary pb-10">
+    <div className="py-20">
       {/* Title */}
       <div className="w-full max-w-6xl mx-auto text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold text-gray-200">
+        <h2 className="text-2xl md:text-3xl mb-4 font-semibold text-gray-200">
           Trending Shows
         </h2>
-        <div className="h-[2px] bg-white w-3/4 mx-auto mt-2 mb-6"></div>
+        <div className="h-[2px] bg-white/30 w-3/4 mx-auto mt-2 mb-10"></div>
       </div>
 
       {/* Carousel */}

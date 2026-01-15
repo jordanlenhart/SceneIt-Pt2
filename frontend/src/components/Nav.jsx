@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search, Menu, X } from 'lucide-react';
 import RegisterModal from './Register'; // import your modal
 import { Link, useNavigate } from 'react-router-dom';
-import SearchBar from "./SearchBar";
+import SearchInput from "./SearchInput";
 
 
 const Nav = () => {
@@ -74,7 +74,7 @@ const Nav = () => {
 
             {/* Search Bar */}
                 <div className="hidden md:block">
-            <SearchBar placeholder="Search" onSearch={handleSearch} />
+            <SearchInput placeholder="Search" onSearch={handleSearch} />
           </div>
 
             {/* Mobile menu button */}
@@ -94,7 +94,7 @@ const Nav = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-700">
               <div className="relative mb-4 px-3">
-               <SearchBar placeholder="Search" onSearch={handleSearch} />
+               <SearchInput placeholder="Search" onSearch={handleSearch} />
               </div>
               <a
                 href="#"

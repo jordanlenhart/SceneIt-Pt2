@@ -36,7 +36,7 @@ const Search = () => {
 
   return (
   <div className="bg-primary min-h-screen text-white"> 
-    <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="max-w-7xl px-6 py-8">
       <h1 className="text-2xl font-bold mb-4">
         Showing results for "{query}"
       </h1>
@@ -44,7 +44,7 @@ const Search = () => {
       {loading && <p>Loading...</p>}
 
       {!loading && results.length === 0 && (
-        <p>No results found.</p>
+        <p>No results found...</p>
       )}
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -53,7 +53,7 @@ const Search = () => {
         ))}
       </div>
     </div>
-    </div>
+  </div>
   );
 };
 

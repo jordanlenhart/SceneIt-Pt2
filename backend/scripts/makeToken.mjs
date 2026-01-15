@@ -1,4 +1,4 @@
-// scripts/makeToken.mjs
+/// scripts/makeToken.mjs
 import jwt from "jsonwebtoken";
 
 const secret = process.env.JWT_SECRET || "dev_secret";

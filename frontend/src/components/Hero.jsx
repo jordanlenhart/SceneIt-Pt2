@@ -1,84 +1,34 @@
-import { useState, useEffect } from "react";
-import RegisterModal from "./Register";
-import ShowCard from "./ShowCard"; // ✅ import your ShowCard
-
-
-// ⚡️ Replace with your TMDB API key
-const API_KEY = "77a22f18008a567c7820ad861f4a5dc7"
+import React from "react";
 
 export default function Hero() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [featured, setFeatured] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const handleGetStarted = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
-
-  useEffect(() => {
-    const fetchFeatured = async () => {
-      setLoading(true);
-      try {
-        // Example: Fetch "popular" TV shows
-        const res = await fetch(
-          `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=en-US&page=1`
-        );
-        const data = await res.json();
-        setFeatured(data.results.slice(0, 6)); // grab just a few for hero
-      } catch (err) {
-        console.error("Error fetching featured shows:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFeatured();
-  }, []);
-
   return (
-    <section className="relative w-full bg-[#023047] flex flex-col items-center py-20 gap-12">
-      {/* Tagline */}
-      <h2 className="text-center text-lg md:text-4xl text-gray-300 max-w-lg leading-relaxed">
-        <p>
-          <span className="text-center text-secondary font-bold">Watch</span> your
-          favorite shows.
-        </p>
-        <p>
-          <span className="text-center text-secondary font-bold">Share</span> your
-          ratings.
-        </p>
-        <p>
-          <span className="text-center text-secondary font-bold">Connect</span> with fans
-          just like you.
-        </p>
-      </h2>
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      {/* Video Background */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        src="/hero-video.mp4"
+        type="video/mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
 
-      {/* Get Started Button */}
-      <button
-        className="scale-125 mt-4 px-6 py-2 bg-secondary text-white rounded-lg hover:bg-orange-500 hover:scale-150 transition"
-        onClick={handleGetStarted}
-      >
-        Get started
-      </button>
+      {/* Dark Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
 
-      {/* Featured Shows */}
-      <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {loading && <p className="text-gray-400">Loading featured shows...</p>}
-
-        {!loading && featured.length > 0 ? (
-          featured.slice(0, 3).map((show) => (
-            <div key={show.id} className="w-72 h-[28rem] mx-auto">
-              <ShowCard show={show} />
-            </div>
-          ))
-        ) : (
-          !loading && <p className="text-gray-500">No featured shows found.</p>
-        )}
+      {/* Hero Content */}
+      <div className="relative z-10 text-center text-white/70">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          Welcome to SceneIt
+        </h1>
+        <p className="text-lg md:text-2xl mb-6">
+          Browse, rate, and share your favorite TV shows and movies
+        </p>
+        <button className="px-6 py-3 mt-10 border-2 border-gray-300/50 hover:border-gray-300 rounded-lg hover:scale-[.97] hover:text-gray-100 hover:font-medium hover:bg-green-600 transition-all duration-400 ease-in-out">
+          Get Started
+        </button>
       </div>
-
-
-
-      {/* Register Modal */}
-      <RegisterModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </section>
   );
 }

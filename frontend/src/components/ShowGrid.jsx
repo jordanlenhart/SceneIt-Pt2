@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const IMG_BASE = "https://image.tmdb.org/t/p/w500";
 
-const ShowGrid = ({ shows }) => {
+export default function ShowGrid({ shows })  {
   if (!shows || shows.length === 0) return null;
 
   return (
@@ -30,5 +30,3 @@ const ShowGrid = ({ shows }) => {
     </div>
   );
 };
-
-export default ShowGrid;
